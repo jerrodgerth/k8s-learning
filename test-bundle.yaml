@@ -7,21 +7,21 @@ spec:
   ports:
   - port: 3000
   selector:
-    app: hello-node
+    app: my-hello-app
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: hello-node
+  name: my-hello-app
 spec:
   replicas: 3
   template:
     metadata:
       labels:
-        app: hello-node
+        app: my-hello-app
     spec:
       containers:
-      - name: hello-node
+      - name: my-hello-app
         image: jgerth/my-hello-app
         ports:
         - containerPort: 3000
@@ -29,16 +29,16 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: alpine
+  name: nginx-curl
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: alpine
+        app: nginx-curl
     spec:
       containers:
-      - name: alpine
-        image: alpine
+      - name: nginx-curl
+        image: rstarmer/nginx-curl
         ports:
         - containerPort: 80
